@@ -1,0 +1,42 @@
+* {
+     border-style:solid;
+ }
+
+body {
+    background-color:black;
+    color:white;
+}
+
+h1 {
+   text-align:center; 
+}
+
+#game {
+    border-style:dotted;
+    height:50%;
+    width:50%;
+    margin:auto;
+}
+
+p {
+    color:yellow;
+}
+
+#start_button { 
+    height:20px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative; 
+    top:50%; 
+    left:50%; 
+}
+
+#buttons {
+   border-style:dotted;
+   width:50%;
+    margin:auto;  
+}
+
+div {
+    padding:10px;
+}
