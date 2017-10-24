@@ -1,6 +1,6 @@
 function start() {
   //document.getElementById("game").innerHTML= "You are accused of cosmic crimes by the GAMARO OF MAGNARAX, how do you plead?";//selects the game div and puts some text in it
-  document.getElementById("start_button").style.visibility = "hidden"; 
+  document.getElementById("start_button").style.display = "none"; 
   var txt = document.createElement('p');
   var accusal = document.createTextNode("You are accused of cosmic crimes by the GAMARO OF MAGNARAX. How do you plead?");
   txt.appendChild(accusal);

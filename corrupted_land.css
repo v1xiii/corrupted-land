@@ -1,42 +1,58 @@
+@viewport {
+    zoom: 1.0;
+    width: device-width;
+}
+
 * {
-     border-style:solid;
+    border-style: solid;
+    border-color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
  }
 
+
 body {
-    background-color:black;
-    color:white;
+    border: none;
+    background-color: black;
+    color: white;
 }
 
 h1 {
-   text-align:center; 
-}
-
-#game {
-    border-style:dotted;
-    height:50%;
-    width:50%;
-    margin:auto;
-}
-
-p {
-    color:yellow;
-}
-
-#start_button { 
-    height:20px; 
-    width:100px; 
-    margin: -20px -50px; 
-    position:relative; 
-    top:50%; 
-    left:50%; 
-}
-
-#buttons {
-   border-style:dotted;
-   width:50%;
-    margin:auto;  
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    margin: auto;  
 }
 
 div {
-    padding:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    color: yellow;
+    padding: 1rem;
+}
+
+#game {
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    padding: 2rem;
+}
+
+#start_button {
+    position: relative;
+    height: 2rem; 
+    width: 8rem; 
+}
+
+#buttons {
+    max-width: 50%;
+    margin: auto; 
+    height: 2rem; 
 }
