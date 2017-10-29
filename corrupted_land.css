@@ -10,19 +10,21 @@
 }
 
 body {
-    font-family: verdana;
-    background-color: #18121E;
+    background: radial-gradient(#f45942, #233237);
 }
 
 h1 {
-
+    font-family: 'Russo One', verdana, sans-serif;
+    font-size: 3rem;
+    letter-spacing: .5rem;
     background-color: #233237;
     color: #f45942;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 5rem;
-    margin-bottom: 
+    text-shadow: .5rem .5rem .5rem black;
+    box-shadow: 0 0 1.5rem black;
 }
 
 div {
@@ -30,20 +32,29 @@ div {
     justify-content: center;
     align-items: center;
     background-color: #233237;
+    box-shadow: 0 0 1.5rem black;
+    /*border: ridge .5rem grey;*/
 }
 
 p {
-    color: yellow;
+    font-family: 'Play', verdana, sans-serif;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.438rem;
     padding: 1rem;
-    max-width: 46ch;
-    text-overflow: ellipsis;
+    max-width: 59ch;
 }
 
 button {
+    font-family: 'Play', verdana, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
     background-color: #EAC67A;
-    width: 4rem;
+    width: 4.5rem;
     height: 2rem;
-    margin: .5rem;
+    margin: 1rem;
+    box-shadow: 0 0 1rem black;
+    text-shadow: .03rem .03rem .03rem #f45942;
 }
 
 #game {
@@ -54,7 +65,6 @@ button {
     font-size: 0.875rem;
     margin: 8vh auto auto auto;
     padding: 2rem;
-   
 }
 
 #start_button {
@@ -64,8 +74,8 @@ button {
 }
 
 #buttons {
-    height: 3rem;
+    height: 3.5rem;
     width: 100%;
     max-width: 30rem;
-    margin: auto;
+    margin: 1rem auto auto auto;
 }
