@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    font-family: 'Russo One', verdana, sans-serif;
+    font-family: 'Russo One', impact, sans-serif;
     font-size: 3rem;
     letter-spacing: .5rem;
     background-color: #233237;
@@ -33,7 +33,6 @@ div {
     align-items: center;
     background-color: #233237;
     box-shadow: 0 0 1.5rem black;
-    /*border: ridge .5rem grey;*/
 }
 
 p {
