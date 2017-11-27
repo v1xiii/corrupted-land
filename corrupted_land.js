@@ -1,34 +1,86 @@
 function start() {
-  //document.getElementById("game").innerHTML= "You are accused of cosmic crimes by the GAMARO OF MAGNARAX, how do you plead?";//selects the game div and puts some text in it
-  document.getElementById("start_button").style.display = "none"; 
-  var txt = document.createElement('p');
-  var accusal = document.createTextNode("You are accused of cosmic crimes by the GAMARO OF MAGNARAX. How do you plead?");
-  txt.appendChild(accusal);
-  var pleasework = document.getElementById("game");
-  pleasework.appendChild(txt);
-    
-  var btn0 = document.createElement("button"); //creates a button
-  var btn1 = document.createElement("button");
-  var btn2 = document.createElement("button");
-  var btn3 = document.createElement("button");
-  
-  var btn0_content = document.createTextNode("GUILTY"); //creates the text node
-  btn0.appendChild(btn0_content);//appends the text node to the physical button
-  var element = document.getElementById("buttons");//selects the game div, adds that selection to a variable
-  element.appendChild(btn0);//places the physical button to the game div
-  element.appendChild(btn1);
-  element.appendChild(btn2);
-  element.appendChild(btn3);
-  
-  btn0.onclick = fight; //makes the button load the next function when clicked
+
+    document.getElementById("start_button").style.display = "none"; //hides start button
+
+    var paragraph = document.createElement('p');
+    var textNode = document.createTextNode("You are accused of cosmic crimes by the GAMARO OF MAGNARAX. How do you plead?");
+    paragraph.appendChild(textNode);
+    var gameText = document.getElementById("game");
+    gameText.appendChild(paragraph);
+
+    var btn0 = document.createElement("button"); //creates a button
+    var btn1 = document.createElement("button");
+    var btn2 = document.createElement("button");
+    var btn3 = document.createElement("button");
+
+    btn0.id = "btn0";
+    btn1.id = "btn1";
+    btn2.id = "btn2";
+    btn3.id = "btn3";
+
+    var btn0_content = document.createTextNode("GUILTY"); //creates the text node for the button
+    var btn1_content = document.createTextNode("INNOCENT");
+    var btn2_content = document.createTextNode("");
+    var btn3_content = document.createTextNode("");
+
+    btn0.appendChild(btn0_content);//appends the text node to the button
+    btn1.appendChild(btn1_content);
+    btn2.appendChild(btn2_content);
+    btn3.appendChild(btn3_content);
+
+    var button = document.getElementById("buttons");//selects the buttons div, adds that selection to a variable
+
+    button.appendChild(btn0);//places the physical button in the buttons div
+    button.appendChild(btn1);
+    button.appendChild(btn2);
+    button.appendChild(btn3);
+
+    clicktest()
+
+    function clicktest() {
+        var go = 0;
+        function varchange() {
+            go = 1;
+        }
+       //btn0.onclick = varchange(); this is the culprit...
+        if (go === 1) {
+           fight();
+        }        
+    }
 
     function fight() {
-        //document.getElementById("game").innerHTML= "Your molecules have been scattered.";
-        var molecules = document.createTextNode("Your molecules have been scattered.");//creates the next line of game text
-        txt.replaceChild(molecules, accusal); // (new textnode, old textnode) replaces the text node attached to the P element in the #game div.
-        var test_content = document.createTextNode("Attack"); //creates the next button text
-        btn0.replaceChild(test_content, btn0_content);//replaces the text node attached to the button element in the #buttons div
-        
-    }    
-}
 
+        var yourHPElement = document.getElementById("you");
+        var bossHPElement = document.getElementById("boss");
+        var yourHP = 100;
+        var bossHP = 1000;
+
+        var dice = Math.floor(Math.random()*10)-1;
+
+        button.children[0].textContent = "Attack";
+        button.children[1].textContent = "Defend";
+        button.children[2].textContent = "Item";
+        button.children[3].textContent = "Inspect";
+
+        yourHPElement.textContent = yourHP;
+        bossHPElement.textContent = bossHP;
+
+        gameText.children[1].textContent = "You are to be executed";
+    }
+       /* function fight() {
+
+        var turn = "boss";
+
+        function roll() {
+            var hit = dice;
+            if (turn === "boss") {
+                yourHP = yourHP - hit;
+                console.log(yourHP);
+            }
+
+            else {
+               bossHP = bossHP - hit; 
+
+            }
+        }*/
+}
