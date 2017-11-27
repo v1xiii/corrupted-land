@@ -42,7 +42,8 @@ function start() {
         function varchange() {
             go = 1;
         }
-       //btn0.onclick = varchange(); this is the culprit...
+       //btn0.onclick = varchange(); //these are the problem...
+       //btn1.onclick = varchange();
         if (go === 1) {
            fight();
         }        
