@@ -28,12 +28,13 @@ function start() {
 var yourHPElement = document.getElementById("you");
 var bossHPElement = document.getElementById("boss");
 var yourHP = 100;
-var bossHP = 1000;
+var bossHP = 100;
 var dice = Math.floor(Math.random()*10)+1;
 var hit = dice;
+var shield = "down";
+var turnCounter = 1;
 
 function fight() {
-
     //var turn = "boss";
     btn0_content.textContent = "Attack";
     btn1_content.textContent = "Defend";
@@ -42,10 +43,10 @@ function fight() {
 
     buttonDisable();
 
-    yourHPElement.textContent = yourHP; //displays hp value set in yourHP, implicit coercion?
+    yourHPElement.textContent = yourHP; //displays hp value set in yourHP
     bossHPElement.textContent = bossHP;
 
-    rollBoss()
+    rollBossInitial();
 
     gameText.children[1].textContent = "You are to be executed. You are struck for " + hit + " damage but did not fall.";    
 
@@ -54,30 +55,76 @@ function fight() {
     btn2.onclick = item;
     btn3.onclick = inspect;
 
-    setTimeout(function(){buttonEnable()}, 3000);
+    setTimeout(function(){buttonEnable();}, 3000);
 
-    gameText.children[1].textContent = "Take action.";    
-
+    setTimeout(function(){message("Take action.");}, 3000);
 }
 
-function rollBoss() {
+function message(text) {
+    gameText.children[1].textContent = text;
+}
+
+function rollBossInitial() {
     yourHP = yourHP - hit;
     yourHPElement.textContent = yourHP;
     //turn = "yours";
 }
 
+function rollBoss() {
+    if (shield === "up") {
+       hit = Math.ceil(random() / 4); 
+    }   else {
+            hit = random();
+        }
+
+    message("Your foe readies his attack.");
+    setTimeout(function(){strike();}, 1500);
+
+    function strike() {
+        yourHP = yourHP - hit;
+        yourHPElement.textContent = yourHP;
+
+        if (shield === "up") {
+            message("You endure the suffering of " + hit + " damage. Instead of " + hit * 4 + " damage.");
+        }   else {
+                message("You endure the suffering of " + hit + " damage.");
+            }
+        if (yourHP > 0) {
+            turnCounter++;
+            setTimeout(function(){buttonEnable();}, 3000);
+        }   else {
+                setTimeout(function(){message("Your molecules have been scattered by the Unholy God Emperor, Gamaro of Magnarax. You survived for " + turnCounter + " rounds.");}, 3000); 
+            }
+        //turn = "yours";
+    }
+}
+
 function rollYours() {
-    hit = dice;
-    bossHP = bossHP - random();
+    shield = "down";
+    hit = random();
+    bossHP = bossHP - hit;
     bossHPElement.textContent = bossHP;
+    message("You strike the Exalted One for " + hit + " damage.");
+    buttonDisable();
+
+    if (bossHP < 1) {
+        setTimeout(function(){message("You have defeated the Gamaro of Magnarax in " + turnCounter + " rounds. You are free to return to the Gray Waste.");}, 3000);
+    }   else {
+            setTimeout(function(){rollBoss();}, 3000);
+        }
     //turn = "boss";
 }
 
-function random() {
-    return Math.floor(Math.random()*10)+1;
+function defend() {
+    shield = "up";
+    message("You brace yourself.");
+    buttonDisable();
+    setTimeout(function(){rollBoss();}, 3000);
 }
 
-
+function random() {
+    return Math.floor(Math.random()*50)+1;
+}
 
 function buttonDisable() {
     btn0.disabled = true;
@@ -101,14 +148,10 @@ function buttonEnable() {
     btn3.style.backgroundColor = "#EAC67A";
 }
 
-function defend() {
-    alert("Defend feature not yet added.");
-}
-
 function item() {
     alert("Item feature not yet added.");
 }
 
 function inspect() {
-    setTimeout(function(){alert("Inspect feature not yet added.")}, 1000);
+    alert("Inspect feature not yet added.");
 }
